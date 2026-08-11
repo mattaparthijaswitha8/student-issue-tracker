@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Issue Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2>Student Issue Tracker</h2>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Report Issue</a>
+            <a href="#">Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <section class="hero">
+
+        <div class="hero-content">
+            <h1>Student Issue Tracker</h1>
+
+            <p>
+                Report your college issues easily and track
+                their status in one place.
+            </p>
+
+            <button onclick="showMessage()">
+                Report an Issue
+            </button>
+        </div>
+
+    </section>
+    <!-- Report Issue Form -->
+<section class="issue-form">
+    <h2>Report an Issue</h2>
+
+    <form id="issueForm">
+
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" placeholder="Enter your name" required>
+
+        <label for="issueTitle">Issue Title</label>
+        <input type="text" id="issueTitle" placeholder="Enter issue title" required>
+
+        <label for="category">Category</label>
+        <select id="category" required>
+            <option value="">Select category</option>
+            <option value="Academic">Academic</option>
+            <option value="Infrastructure">Infrastructure</option>
+            <option value="Transport">Transport</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="description">Description</label>
+        <textarea id="description" placeholder="Describe your issue" required></textarea>
+
+        <button type="submit">Submit Issue</button>
+
+    </form>
+</section>
+
+    <!-- Features -->
+    <section class="features">
+
+        <h2>Our Features</h2>
+
+        <div class="feature-container">
+
+            <div class="card">
+                <h3>📝 Report Issue</h3>
+                <p>
+                    Students can submit their problems
+                    quickly and easily.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📋 Track Status</h3>
+                <p>
+                    Check whether your issue is pending,
+                    in progress or resolved.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Dashboard</h3>
+                <p>
+                    View and manage reported issues
+                    through a simple dashboard.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Track Issues -->
+    <section class="track-section">
+        <h2>Submitted Issues</h2>
+        <div id="issueList">
+        </div>
+    </section>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+        <h2>Dashboard</h2>
+
+        <div class="dashboard-container">
+            <div class="dashboard-card">
+                <h3>Total Issues</h3>
+                <p id="totalIssues">0</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Pending Issues</h3>
+                <p id="pendingIssues">0</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Resolved Issues</h3>
+                <p id="resolvedIssues">0</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Student Issue Tracker</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
