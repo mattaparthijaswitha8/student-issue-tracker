@@ -1,8 +1,31 @@
 const issueForm = document.getElementById("issueForm");
 const issueList = document.getElementById("issueList");
-let totalIssues = 0;
-let pendingIssues = 0;
-let resolvedIssues = 0;
+
+let issues = JSON.parse(localStorage.getItem("studentIssues")) || [];
+
+function displayIssues() {
+    issueList.innerHTML = "";
+
+    issues.forEach(function(issue) {
+        issueList.innerHTML += `
+            <div class="issue-card">
+                <h3>${issue.title}</h3>
+                <p><strong>Student:</strong> ${issue.student}</p>
+                <p><strong>Category:</strong> ${issue.category}</p>
+                <p><strong>Description:</strong> ${issue.description}</p>
+                <p><strong>Status:</strong> ${issue.status}</p>
+            </div>
+        `;
+    });
+
+    document.getElementById("totalIssues").textContent = issues.length;
+
+    document.getElementById("pendingIssues").textContent =
+        issues.filter(issue => issue.status === "Pending").length;
+
+    document.getElementById("resolvedIssues").textContent =
+        issues.filter(issue => issue.status === "Resolved").length;
+}
 
 issueForm.addEventListener("submit", function(event) {
 
@@ -12,22 +35,20 @@ issueForm.addEventListener("submit", function(event) {
     const issueTitle = document.getElementById("issueTitle").value;
     const category = document.getElementById("category").value;
     const description = document.getElementById("description").value;
-    totalIssues++;
-pendingIssues++;
 
-document.getElementById("totalIssues").textContent = totalIssues;
-document.getElementById("pendingIssues").textContent = pendingIssues;
-document.getElementById("resolvedIssues").textContent = resolvedIssues;
+    const newIssue = {
+        student: studentName,
+        title: issueTitle,
+        category: category,
+        description: description,
+        status: "Pending"
+    };
 
-    issueList.innerHTML += `
-        <div class="issue-card">
-            <h3>${issueTitle}</h3>
-            <p><strong>Student:</strong> ${studentName}</p>
-            <p><strong>Category:</strong> ${category}</p>
-            <p><strong>Description:</strong> ${description}</p>
-            <p><strong>Status:</strong> Pending</p>
-        </div>
-    `;
+    issues.push(newIssue);
+
+    localStorage.setItem("studentIssues", JSON.stringify(issues));
+
+    displayIssues();
 
     alert(
         "Issue Submitted Successfully!\n\n" +
@@ -38,3 +59,5 @@ document.getElementById("resolvedIssues").textContent = resolvedIssues;
 
     issueForm.reset();
 });
+
+displayIssues();
